@@ -156,3 +156,13 @@ bot.on("callback_query", (query) => {
     bot.sendMessage(process.env.LOCAL_BOT_CHAT_ID, submitOnce);
   }
 });
+
+export async function handler(event) {
+  try {
+    await bot.handleUpdate(JSON.parse(event.body));
+    return { statusCode: 200, body: "" };
+  } catch (e) {
+    console.log(e);
+    return { statusCode: 400, body: "This endpoint is meant for bot and telegram communication" };
+  }
+}
