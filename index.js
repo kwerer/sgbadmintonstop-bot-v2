@@ -50,6 +50,21 @@ bot.onText(/\/help/, (msg) => {
 
 // check for specific message
 bot.on("message", (msg) => {
+  // list of options for each question
+  const formatOptions = [
+    "Men's Singles",
+    "Women's Singles",
+    "Mixed's Singles",
+    "Men's Doubles",
+    "Women's Doubles",
+    "Mixed's Doubles",
+    "Men's Singles/Doubles",
+    "Women's Singles/Doubles",
+    "Mixed's Singles/Doubles",
+  ];
+
+  const levelOptions = ["Beginner", "Intermediate", "Advanced", "Professional :)"];
+
   // return if bot command is entered
   if (msg.text.toString().toLowerCase() === "/start" || msg.text.toString().toLowerCase() === "/help") {
     return;
@@ -66,11 +81,11 @@ bot.on("message", (msg) => {
 
   // 1. receive input for format of play
   // 2. ask use for location
-  else if (role === "organiser" && stage == 3) {
+  else if (role === "organiser" && stage == 3 && formatOptions.includes(msg.text.toString())) {
     [stage, gameFormat] = inputFormatOfGame(bot, msg, "Organiser");
   } else if (role === "organiser" && stage === 4) {
     [stage, location] = inputLocationOfGame(bot, msg, "Organiser");
-  } else if (role === "organiser" && stage === 5) {
+  } else if (role === "organiser" && stage === 5 && levelOptions.includes(msg.text.toString())) {
     [stage, levelOfPlay] = inputLevelOfPlay(bot, msg, "Organiser");
   } else if (role === "organiser" && stage === 6) {
     console.log("org 6");
@@ -103,7 +118,7 @@ bot.on("message", (msg) => {
 
   // 1. receive input for format of play
   // 2. ask user for location
-  else if (role === "player" && stage === 3) {
+  else if (role === "player" && stage === 3 && formatOptions.includes(msg.text.toString())) {
     [stage, gameFormat] = inputFormatOfGame(bot, msg, "Player");
   }
 
@@ -115,7 +130,7 @@ bot.on("message", (msg) => {
 
   // 1. receive input for level of play
   // 2. ask for contact information
-  else if (role === "player" && stage === 5) {
+  else if (role === "player" && stage === 5 && levelOptions.includes(msg.text.toString())) {
     [stage, levelOfPlay] = inputLevelOfPlay(bot, msg, "Player");
   }
 
