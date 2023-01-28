@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "dotenv": "^16.0.3",
+    "netlify-lambda": "^2.0.15",
     "node-telegram-bot-api": "^0.61.0",
     "nodemon": "^2.0.20"
   },
