@@ -88,7 +88,6 @@ bot.on("message", (msg) => {
   } else if (role === "organiser" && stage === 5 && levelOptions.includes(msg.text.toString())) {
     [stage, levelOfPlay] = inputLevelOfPlay(bot, msg, "Organiser");
   } else if (role === "organiser" && stage === 6) {
-    console.log("org 6");
     [stage, contactInformation] = inputTimeOfGame(bot, msg, "Organiser");
   } else if (role === "organiser" && stage === 7) {
     [stage, time] = inputFeesOfGame(bot, msg, "Organiser");
@@ -144,14 +143,6 @@ bot.on("message", (msg) => {
   else {
     bot.sendMessage(process.env.LOCAL_BOT_CHAT_ID, errorMessage);
   }
-  console.log(role, "role");
-  console.log(stage, "stage");
-  console.log(gameFormat, "gameFormat");
-  console.log(location, "location");
-  console.log(levelOfPlay, "levelOfPlay");
-  console.log(time, "time");
-  console.log(fees, "fees");
-  console.log(contactInformation, "contactInformation");
 });
 
 // handles bot actions for inline keyboard

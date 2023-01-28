@@ -6,7 +6,6 @@ export function startFunction(bot, msg) {
       keyboard: [[{ text: "Begin!", callback_data: "start_begin" }]],
     },
   });
-  const keyboard = { reply_markup: { inline_keyboard: [[{ text: "rt", callback_data: "rt" }]] } };
 
   return 1;
 }
