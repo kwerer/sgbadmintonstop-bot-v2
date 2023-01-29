@@ -16,6 +16,14 @@ import {
 } from "../playerPortal.js";
 import { errorMessage, submitOnce } from "../../promptText.js";
 import Axios from "axios";
+import express from "express";
+
+// express server to make a get request every time the bot runs
+const app = express();
+
+app.get(`https://animated-dolphin-8077c1.netlify.app/.netlify/functions/bot`, (req, res) => {
+  console.log("Webhook sent!");
+});
 
 dotenv.config();
 
@@ -156,7 +164,7 @@ bot.on("callback_query", (query) => {
   } else if (query.data === "organisersubmit" && stage === 11) {
     stage = submitGame(bot, query, gameFormat, location, levelOfPlay, time, fees, contactInformation, "Organiser");
   } else {
-    bot.sendMessage(25262738, submitOnce);
+    bot.sendMessage(process.env.BOT_TOKEN, submitOnce);
   }
 });
 
