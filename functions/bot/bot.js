@@ -159,7 +159,7 @@ bot.on("callback_query", (query) => {
 
 export async function handler(event) {
   try {
-    await bot.handleUpdate(JSON.parse(event.body));
+    await bot.on(JSON.parse(event.body));
     return { statusCode: 200, body: "" };
   } catch (e) {
     console.log(e);
