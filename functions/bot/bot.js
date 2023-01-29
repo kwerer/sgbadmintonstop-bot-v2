@@ -142,7 +142,7 @@ bot.on("message", (msg) => {
 
   // ---------------------------------------------------------------------------
   else {
-    bot.sendMessage(process.env.LOCAL_BOT_CHAT_ID, errorMessage);
+    bot.sendMessage(process.env.CHAT_ID, errorMessage);
   }
 });
 
@@ -154,7 +154,7 @@ bot.on("callback_query", (query) => {
   } else if (query.data === "organisersubmit" && stage === 11) {
     stage = submitGame(bot, query, gameFormat, location, levelOfPlay, time, fees, contactInformation, "Organiser");
   } else {
-    bot.sendMessage(process.env.LOCAL_BOT_CHAT_ID, submitOnce);
+    bot.sendMessage(process.env.CHAT_ID, submitOnce);
   }
 });
 
@@ -162,7 +162,7 @@ export async function handler(event) {
   try {
     const { message } = JSON.parse(event.body);
     await Axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
-      chat_id: process.env.LOCAL_BOT_CHAT_ID,
+      chat_id: process.env.CHAT_ID,
       text: message,
     });
     return { statusCode: 200 };
