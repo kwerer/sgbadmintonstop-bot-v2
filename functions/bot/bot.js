@@ -21,10 +21,6 @@ import express from "express";
 // express server to make a get request every time the bot runs
 const app = express();
 
-app.get(`https://animated-dolphin-8077c1.netlify.app/.netlify/functions/bot`, (req, res) => {
-  console.log("Webhook sent!");
-});
-
 dotenv.config();
 
 const bot = new TelegramBot(process.env.BOT_TOKEN, {
@@ -170,6 +166,9 @@ bot.on("callback_query", (query) => {
 
 export async function handler(event) {
   try {
+    app.get(`https://animated-dolphin-8077c1.netlify.app/.netlify/functions/bot`, (req, res) => {
+      console.log("Webhook sent!");
+    });
     // const { message } = JSON.parse(event.body);
     // console.log(message, "message");
     // console.log(25262738, "25262738");
