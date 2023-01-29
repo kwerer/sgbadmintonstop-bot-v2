@@ -43,7 +43,7 @@ bot.onText(/\/start/, (msg) => {
   // increment stage
   stage = startFunction(bot, msg);
   console.log(msg.chat.id, "chat id");
-  console.log(process.env.CHAT_ID, "chat id");
+  console.log(25262738, "chat id");
 });
 
 // sends a message - helpText
@@ -144,7 +144,7 @@ bot.on("message", (msg) => {
 
   // ---------------------------------------------------------------------------
   else {
-    bot.sendMessage(process.env.CHAT_ID, errorMessage);
+    bot.sendMessage(25262738, errorMessage);
   }
 });
 
@@ -156,7 +156,7 @@ bot.on("callback_query", (query) => {
   } else if (query.data === "organisersubmit" && stage === 11) {
     stage = submitGame(bot, query, gameFormat, location, levelOfPlay, time, fees, contactInformation, "Organiser");
   } else {
-    bot.sendMessage(process.env.CHAT_ID, submitOnce);
+    bot.sendMessage(25262738, submitOnce);
   }
 });
 
@@ -164,7 +164,7 @@ export async function handler(event) {
   try {
     const { message } = JSON.parse(event.body);
     console.log(message, "message");
-    console.log(process.env.CHAT_ID, "process.env.CHAT_ID");
+    console.log(25262738, "25262738");
     await Axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
       chat_id: 25262738,
       text: message,

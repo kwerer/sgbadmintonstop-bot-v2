@@ -17,7 +17,7 @@ dotenv.config();
 
 // stage 2
 export function formatOfGame(bot, role) {
-  bot.sendMessage(process.env.CHAT_ID, formatOfGameText(role), {
+  bot.sendMessage(25262738, formatOfGameText(role), {
     parse_mode: "Markdown",
     reply_markup: {
       keyboard: formatOfGameKeyboard,
@@ -31,14 +31,14 @@ export function formatOfGame(bot, role) {
 // stage 3
 export function inputFormatOfGame(bot, msg, role) {
   const input = msg.text.toString();
-  bot.sendMessage(process.env.CHAT_ID, inputFormatOfPlayText(role, input), { parse_mode: "Markdown" });
+  bot.sendMessage(25262738, inputFormatOfPlayText(role, input), { parse_mode: "Markdown" });
   return [4, input];
 }
 
 // stage 4
 export function inputLocationOfGame(bot, msg, role) {
   const input = msg.text.toString();
-  bot.sendMessage(process.env.CHAT_ID, inputLocationOfGameText(role, input), {
+  bot.sendMessage(25262738, inputLocationOfGameText(role, input), {
     parse_mode: "Markdown",
     reply_markup: {
       keyboard: levelOfPlayKeyboard,
@@ -55,14 +55,14 @@ export function inputLevelOfPlay(bot, msg, role) {
     // this is the last field for player portal
     stage = 10;
   }
-  bot.sendMessage(process.env.CHAT_ID, inputLevelOfPlayText(role, input), { parse_mode: "Markdown" });
+  bot.sendMessage(25262738, inputLevelOfPlayText(role, input), { parse_mode: "Markdown" });
   return [stage, input];
 }
 
 export function finalConfirmationPlayer(bot, msg, role, gameFormat, location, levelOfPlay) {
   const input = msg.text.toString();
   bot.sendMessage(
-    process.env.CHAT_ID,
+    25262738,
     finalConfirmationText(role, gameFormat, location, levelOfPlay, "time", "fees", input, msg.chat.username),
     {
       parse_mode: "Markdown",
@@ -79,13 +79,13 @@ export function finalConfirmationPlayer(bot, msg, role, gameFormat, location, le
 // time
 export function inputTimeOfGame(bot, msg, role) {
   const input = msg.text.toString();
-  bot.sendMessage(process.env.CHAT_ID, inputTimeOfGameText(role, input), { parse_mode: "Markdown" });
+  bot.sendMessage(25262738, inputTimeOfGameText(role, input), { parse_mode: "Markdown" });
   return [7, input];
 }
 // fees
 export function inputFeesOfGame(bot, msg, role) {
   const input = msg.text.toString();
-  bot.sendMessage(process.env.CHAT_ID, inputFeesText(role, input), { parse_mode: "Markdown" });
+  bot.sendMessage(25262738, inputFeesText(role, input), { parse_mode: "Markdown" });
   return [10, input];
 }
 
@@ -95,7 +95,7 @@ export function inputPictureOfGame(bot, msg, role) {}
 export function finalConfirmationOrganiser(bot, msg, role, gameFormat, location, time, contactInformation, levelOfPlay) {
   const input = msg.text.toString();
   bot.sendMessage(
-    process.env.CHAT_ID,
+    25262738,
     finalConfirmationText(role, gameFormat, location, levelOfPlay, time, input, contactInformation, msg.chat.username),
     {
       parse_mode: "Markdown",
@@ -124,6 +124,6 @@ export function submitGame(bot, query, gameFormat, location, levelOfPlay, time, 
     );
   }
 
-  bot.sendMessage(process.env.CHAT_ID, submissionConfirmationText);
+  bot.sendMessage(25262738, submissionConfirmationText);
   return 12;
 }
