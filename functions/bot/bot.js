@@ -165,6 +165,9 @@ export async function handler(event) {
     const { message } = JSON.parse(event.body);
     console.log(message, "message");
     console.log(25262738, "25262738");
+    await Axios.get(
+      `https://api.telegram.org/bot${process.env.BOT_TOKEN}/setWebhook?url=https://animated-dolphin-8077c1.netlify.app/api/bot`
+    );
     await Axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
       chat_id: 25262738,
       text: message,
