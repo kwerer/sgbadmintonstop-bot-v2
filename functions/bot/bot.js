@@ -161,6 +161,8 @@ bot.on("callback_query", (query) => {
 export async function handler(event) {
   try {
     const { message } = JSON.parse(event.body);
+    console.log(message, "message");
+    console.log(process.env.CHAT_ID, "process.env.CHAT_ID");
     await Axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
       chat_id: process.env.CHAT_ID,
       text: message,
