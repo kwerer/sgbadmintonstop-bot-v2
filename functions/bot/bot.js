@@ -157,12 +157,12 @@ bot.on("callback_query", (query) => {
   }
 });
 
-// export async function handler(event) {
-//   try {
-//     await bot.on(JSON.parse(event.body));
-//     return { statusCode: 200, body: "" };
-//   } catch (e) {
-//     console.log(e);
-//     return { statusCode: 400, body: "This endpoint is meant for bot and telegram communication" };
-//   }
-// }
+export async function handler(event) {
+  try {
+    const { message } = JSON.parse(event.body);
+    return { statusCode: 200, body: message };
+  } catch (e) {
+    console.log(e);
+    return { statusCode: 400, body: "This endpoint is meant for bot and telegram communication" };
+  }
+}
