@@ -15,6 +15,7 @@ import {
   inputPictureOfGame,
 } from "../playerPortal.js";
 import { errorMessage, submitOnce } from "../../promptText.js";
+import Axios from "axios";
 
 dotenv.config();
 
@@ -160,7 +161,11 @@ bot.on("callback_query", (query) => {
 export async function handler(event) {
   try {
     const { message } = JSON.parse(event.body);
-    return { statusCode: 200, body: message };
+    await Axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
+      chat_id: process.env.LOCAL_BOT_CHAT_ID,
+      text: message,
+    });
+    return { statusCode: 200 };
   } catch (e) {
     console.log(e);
     return { statusCode: 400, body: "This endpoint is meant for bot and telegram communication" };
