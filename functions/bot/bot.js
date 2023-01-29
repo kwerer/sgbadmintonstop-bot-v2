@@ -18,7 +18,7 @@ import { errorMessage, submitOnce } from "../../promptText.js";
 
 dotenv.config();
 
-const bot = new TelegramBot(process.env.LOCAL_BOT_TOKEN, {
+const bot = new TelegramBot(process.env.BOT_TOKEN, {
   polling: true,
 });
 
