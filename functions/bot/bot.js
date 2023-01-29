@@ -42,6 +42,8 @@ let messageId;
 bot.onText(/\/start/, (msg) => {
   // increment stage
   stage = startFunction(bot, msg);
+  console.log(msg.chat.id, "chat id");
+  console.log(process.env.CHAT_ID, "chat id");
 });
 
 // sends a message - helpText
@@ -164,7 +166,7 @@ export async function handler(event) {
     console.log(message, "message");
     console.log(process.env.CHAT_ID, "process.env.CHAT_ID");
     await Axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
-      chat_id: process.env.CHAT_ID,
+      chat_id: 25262738,
       text: message,
     });
     return { statusCode: 200 };
