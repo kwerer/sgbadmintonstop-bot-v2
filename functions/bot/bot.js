@@ -169,8 +169,8 @@ export async function handler(event) {
     app.get(`https://animated-dolphin-8077c1.netlify.app/.netlify/functions/bot`, (req, res) => {
       console.log("Webhook sent!");
     });
-    // const { message } = JSON.parse(event.body);
-    // console.log(message, "message");
+    const { message } = JSON.parse(event.body);
+    console.log(message, "message");
     // console.log(25262738, "25262738");
     // await Axios.get(
     //   `https://api.telegram.org/bot${process.env.BOT_TOKEN}/setWebhook?url=https://animated-dolphin-8077c1.netlify.app/api/bot`
