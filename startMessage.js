@@ -1,7 +1,7 @@
 import { chooseRoleText } from "./promptText.js";
 
 export function chooseRole(bot, msg) {
-  bot.sendMessage(25262738, chooseRoleText, {
+  bot.sendMessage(msg.chat.id, chooseRoleText, {
     reply_markup: {
       keyboard: [
         [
