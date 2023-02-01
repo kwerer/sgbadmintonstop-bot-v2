@@ -1,6 +1,6 @@
 [build]
   functions = "functions"
-  command = "npm run build"
+  command = "netlify deploy && mkdir ./public"
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
