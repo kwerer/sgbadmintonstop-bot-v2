@@ -1,7 +1,7 @@
 import TelegramBot from "node-telegram-bot-api";
 import dotenv from "dotenv";
-import { startFunction, helpFunction } from "../commands.js";
-import { chooseRole } from "../startMessage.js";
+import { startFunction, helpFunction } from "../../commands.js";
+import { chooseRole } from "../../startMessage.js";
 import {
   finalConfirmationPlayer,
   formatOfGame,
@@ -13,7 +13,7 @@ import {
   inputFeesOfGame,
   finalConfirmationOrganiser,
   inputPictureOfGame,
-} from "../playerPortal.js";
+} from "../../playerPortal.js";
 import { errorMessage, submitOnce } from "../../promptText.js";
 import Axios from "axios";
 import express from "express";
@@ -164,22 +164,10 @@ bot.on("callback_query", (query) => {
   }
 });
 
-export async function handler(event) {
+export async function handler(event, context) {
   try {
-    app.get(`https://animated-dolphin-8077c1.netlify.app/.netlify/functions/bot`, (req, res) => {
-      console.log("Webhook sent!");
-    });
-    console.log(event.body, "event body");
-    const { message } = JSON.parse(event.body);
-    console.log(message, "message");
-    // console.log(25262738, "25262738");
-    // await Axios.get(
-    //   `https://api.telegram.org/bot${process.env.BOT_TOKEN}/setWebhook?url=https://animated-dolphin-8077c1.netlify.app/api/bot`
-    // );
-    // await Axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
-    //   chat_id: 25262738,
-    //   text: message,
-    // });
+    console.log(event, "event");
+    console.log(context, "context");
     return { statusCode: 200 };
   } catch (e) {
     console.log(e);
